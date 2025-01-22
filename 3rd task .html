@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Amazon-like Ecommerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            scroll-behavior: smooth; /* Add this for smooth scrolling */
+        }
+
+        .navbar {
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            color: white;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .amazon {
+            text-decoration: none;
+            height: 50px;
+            width: 100px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .hover {
+            text-decoration: none;
+            color: white;
+        }
+
+        .hover:hover {
+            border: 2px solid white;
+        }
+
+        .search {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: pink;
+            width: 620px;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        .search:hover {
+            border: 2px solid rgba(255, 187, 0, 0.76);
+        }
+
+        .select {
+            background-color: black;
+            width: 40px;
+            text-align: center;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border: none;
+        }
+
+        .mag {
+            background-color: rgba(255, 187, 0, 0.76);
+            display: flex;
+            width: 45px;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .searchama {
+            width: 100%;
+            font-size: 1rem;
+            border: none;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            color: #0f1111;
+        }
+
+        .panel {
+            display: flex;
+            height: 40px;
+            background-color: #222f3d;
+            color: white;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .panel p {
+            display: inline;
+            margin-left: 15px;
+        }
+
+        .hero {
+            background-image: url('https://via.placeholder.com/1500x500');
+            height: 250px;
+            background-size: cover;
+        }
+
+        .shopsection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            background-color: rgb(231, 244, 245);
+        }
+
+        .box {
+            border: 2px solid black;
+            height: 400px; /* Increased box height */
+            width: 23%;
+            background-color: white;
+            padding: 20px 0px 15px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0; /* Removed space between image box and panel */
+        }
+
+        .box-content {
+            margin: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure box content takes full height */
+        }
+
+        .bg1 {
+            height: 250px; /* Ensure image takes up most of the box space */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: green;
+        }
+
+        .description {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .add-to-cart-btn {
+            margin-top: 15px;
+            background-color: rgba(255, 187, 0, 0.76);
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 20px;
+            background-color: #222f3d;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .foot-panel1 {
+            background-color: skyblue;
+            color: white;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .foot-panel2 {
+            display: flex;
+            justify-content: space-evenly;
+            color: white;
+        }
+
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul a {
+            display: block;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .shopsection {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                width: 40%;
+                margin: 10px 0;
+            }
+
+            .panel {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                font-size: 14px;
+            }
+
+            .search {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .box {
+                width: 90%;
+            }
+        }
+
+        .cart-container {
+            margin: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #007bff;
+        }
+
+        .cart-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-items {
+            list-style: none;
+        }
+
+        .cart-items li {
+            margin: 5px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-items li button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: right;
+        }
+
+        .order-btn {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: green;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .order-btn:hover {
+            background-color: darkgreen;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="amazon"><a href="#" class="hover">amazon</a></div>
+            <div class="navadd hover">
+                <p class="add1">Deliver to</p>
+                <div class="icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add2">India</p>
+                </div>
+            </div>
+            <div class="search">
+                <select class="select hover">
+                    <option>All</option>
+                </select>
+                <input placeholder="Search Amazon" class="searchama hover">
+                <div class="mag"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+            <div class="login hover">
+                <p class="hlo">Hello, Sign in</p>
+                <p class="acc"><b>Account & Lists</b></p>
+            </div>
+            <div class="order hover">
+                <p class="hlo">Returns</p>
+                <p class="acc"><b>& Orders</b></p>
+            </div>
+            <div class="cart hover" id="cart">
+                <!-- Update href with the cart-container section -->
+                <a href="#cart-container"><i class="fa-solid fa-cart-shopping"></i>Cart(0)</a>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="hover">
+                <i class="fa-solid fa-bars"></i> All
+            </div>
+            <div class="opt">
+                <p class="hover">Today's Deals</p>
+                <p class="hover">Customer Service</p>
+                <p class="hover">Registry</p>
+                <p class="hover">Gift Cards</p>
+                <p class="hover">Sell</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="shopsection">
+        <div class="box">
+            <div class="box-content">
+                <h2>Apple Mobile</h2>
+                <div class="bg1" style="background-image: url('Image/Apple-iPhone-16-Pro-hero-240909_inline.jpg.large.jpg');"></div>
+                <p class="price">140000/-</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Apple Mobile', 140000)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-content">
+                <h2>HeadSet</h2>
+                <div class="bg1" style="background-image: url('Image/airpods-max-select-202409-orange_FV1_FMT_WHH.jfif');"></div>
+                <p class="price">45000/-</p>
+                <button class="add-to-cart-btn" onclick="addToCart('HeadSet', 45000)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-content">
+                <h2>HeadSet</h2>
+                <div class="bg1" style="background-image: url('Image/watch.jfif');"></div>
+                <p class="price">1560/-</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Watch', 1560)">Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-content">
+                <h2>Heels</h2>
+                <div class="bg1" style="background-image: url('Image/heels.jpg');"></div>
+                <p class="price">1299/-</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Heels', 1299)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-container" id="cart-container">
+        <h2>Your Cart</h2>
+        <ul class="cart-items" id="cart-items">
+            <li>No items in cart</li>
+        </ul>
+        <div class="total" id="total">Total: 0.00</div>
+        <!-- Order Button -->
+        <button class="order-btn" onclick="placeOrder()">Place Order</button>
+    </div>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(itemName, price) {
+            cartItems.push({ name: itemName, price: price });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsList = document.getElementById('cart-items');
+            const cartCounter = document.getElementById('cart');
+            const totalDisplay = document.getElementById('total');
+            
+            cartItemsList.innerHTML = '';  
+            let total = 0;
+            
+            if (cartItems.length === 0) {
+                cartItemsList.innerHTML = '<li>No items in cart</li>';
+                totalDisplay.innerText = 'Total: $0.00';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - ${item.price}`;
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.onclick = () => removeFromCart(index);
+                    listItem.appendChild(deleteButton);
+                    cartItemsList.appendChild(listItem);
+                    total += item.price;
+                });
+                totalDisplay.innerText = `Total: ${total.toFixed(2)}`;
+            }
+            
+            cartCounter.textContent = `Cart (${cartItems.length})`; // Update cart counter
+        }
+
+        function placeOrder() {
+            if (cartItems.length > 0) {
+                alert('Order placed successfully!');
+                cartItems = [];
+                updateCart();
+            } else {
+                alert('Your cart is empty. Add items to the cart first!');
+            }
+        }
+    </script>
+
+</body>
+</html>
